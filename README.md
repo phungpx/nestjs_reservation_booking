@@ -71,4 +71,13 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
-# nestjs_reservation_booking
+
+## Packages
+
+1. [joi](https://www.npmjs.com/package/joi)
+
+```
+npm i joi
+```
+
+allow us to do schema validation and then we can go ahead and start our server backup.
