@@ -1,0 +1,23 @@
+services:
+  reservations:
+    container_name: reservations
+    build:
+      context: .
+      dockerfile: ./apps/reservations/Dockerfile
+      target: development
+    command: npm run start:dev reservations
+    depends_on:
+      - mongo
+    env_file:
+      - ./apps/reservations/.env
+    ports:
+      - "7000:7000"
+    volumes:
+      - .:/usr/src/apps
+
+  mongo:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always
