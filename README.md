@@ -81,3 +81,11 @@ npm i joi
 ```
 
 allow us to do schema validation and then we can go ahead and start our server backup.
+
+2. [class-validator](https://www.npmjs.com/package/class-validator)
+
+3. [mongoose](https://www.npmjs.com/package/mongoose)
+
+4. [@nestjs/mongoose](https://www.npmjs.com/package/@nestjs/mongoose)
+
+5. [@nestjs/config](https://www.npmjs.com/package/@nestjs/config)
