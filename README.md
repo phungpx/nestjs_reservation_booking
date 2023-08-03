@@ -58,29 +58,77 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-## Support
+## Services
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 1. Common Libraries
 
-## Stay in touch
+- Create a library named `common`
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+nest generate library common
+```
 
-## License
+- Create `database` module into `common` library
 
-Nest is [MIT licensed](LICENSE).
+```
+nest generate module database -p common
+```
+
+- Create `config` module into `common` library
+
+```
+nest generate module config -p common
+```
+
+### 2. Reservation
+
+- Create the application/service named `reservations`
+
+```
+nest generate app reservations
+```
+
+- Create CRUD
+
+```
+nest
+```
+
+### 3. Authentication and Authorization
+
+Allowing this system to create new users and authenticate or log in against those users and obtain a JSON Web Token, so users will provide their credentials, we'll give them back that token to authenticate them, which is a very common authentication mechanism. And we can make sure of this authentication mechanism in all of our different microsevices that will implement authentication.
+
+- Create the application/service named `auth`
+
+```
+nest generate app auth
+```
+
+| ![alt text](./figures/nest_generate_app_auth.png?raw=true) |
+
+- Generate a module called `users` to `auth` application.
+
+```
+nest g module users
+```
+
+- Generate a controller for `users` with aming to create new users over `HTTP` and we'll select the `auth` project here.
+
+```
+nest g controller users
+```
+
+| ![alt text](./figures/users_module_and_controllers.png?raw=true) |
+
+
 
 ## Packages
 
-1. [joi](https://www.npmjs.com/package/joi)
+1. [joi](https://www.npmjs.com/package/joi): allow us to do schema validation and then we can go ahead and start our server backup.
 
 ```
 npm i joi
 ```
-
-allow us to do schema validation and then we can go ahead and start our server backup.
 
 2. [class-validator](https://www.npmjs.com/package/class-validator)
 
