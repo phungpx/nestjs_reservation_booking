@@ -27,7 +27,7 @@ services:
     env_file:
       - ./apps/auth/.env
     ports:
-      - "8000:8000"
+      - "7001:7001"
     volumes:
       - .:/usr/src/apps
 

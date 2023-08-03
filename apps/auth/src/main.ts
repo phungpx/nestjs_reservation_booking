@@ -10,6 +10,5 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useLogger(app.get(Logger));
   await app.listen(configService.get('AUTH_HTTP_PORT'));
-  console.log(configService.get('AUTH_HTTP_PORT'));
 }
 bootstrap();
