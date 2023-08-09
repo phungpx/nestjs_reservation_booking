@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import {
   Injectable,
   UnauthorizedException,
@@ -35,6 +35,4 @@ export class UsersService {
     }
     return user;
   }
-
-  //   async getUser(getUserDto: GetUserDto){}
 }
