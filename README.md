@@ -146,6 +146,23 @@ npm i @nestjs/jwt passport-jwt
 npm i -D @types/passport-jwt
 ```
 
+### 4. Local Strategy
+
+Allowing us to log in with a user's email and password, which essentially will start off the authentication flow.
+
+- Install the hashing library
+
+```
+npm i bcrypt
+```
+
+```
+npm i -D @types/bcrypt
+```
+
+### 5. Single Sign On (SSO)
+
+
 ## Packages
 
 1. [joi](https://www.npmjs.com/package/joi): allow us to do schema validation and then we can go ahead and start our server backup.

@@ -13,7 +13,7 @@ services:
     ports:
       - "7000:7000"
     volumes:
-      - .:/usr/src/apps
+      - .:/usr/src/app
 
   auth:
     container_name: auth
@@ -29,7 +29,7 @@ services:
     ports:
       - "7001:7001"
     volumes:
-      - .:/usr/src/apps
+      - .:/usr/src/app
 
   mongo:
     container_name: mongodb
