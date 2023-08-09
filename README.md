@@ -120,7 +120,31 @@ nest g controller users
 
 | ![alt text](./figures/users_module_and_controllers.png?raw=true) |
 
+### 3. Passport
 
+- Install some dependencies including `passport`
+
+```
+npm i @nestjs/passport passport passport-local
+```
+
+- Install the types for passport local as a development dependency.
+
+```
+npm i -D @types/passport-local
+```
+
+- Install dependecies to be able to implement `JWT authentication`.
+
+```
+npm i @nestjs/jwt passport-jwt
+```
+
+- Install the types for passport jwt as a development dependency.
+
+```
+npm i -D @types/passport-jwt
+```
 
 ## Packages
 

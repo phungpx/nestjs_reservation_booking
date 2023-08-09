@@ -6,10 +6,10 @@ services:
       dockerfile: ./apps/reservations/Dockerfile
       target: development
     command: npm run start:dev reservations
-    depends_on:
-      - mongo
     env_file:
       - ./apps/reservations/.env
+    depends_on:
+      - mongo
     ports:
       - "7000:7000"
     volumes:
@@ -22,10 +22,10 @@ services:
       dockerfile: ./apps/auth/Dockerfile
       target: development
     command: npm run start:dev auth
-    depends_on:
-      - mongo
     env_file:
       - ./apps/auth/.env
+    depends_on:
+      - mongo
     ports:
       - "7001:7001"
     volumes:
