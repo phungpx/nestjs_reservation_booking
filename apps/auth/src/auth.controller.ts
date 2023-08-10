@@ -1,9 +1,9 @@
 import { Response } from 'express';
 import { Controller, Post, Res, UseGuards } from '@nestjs/common';
 
+import { CurrentUser } from '@app/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { CurrentUser } from './current-user.decorator';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { UserDocument } from './users/models/users.schema';
 import { MessagePattern, Payload } from '@nestjs/microservices';
@@ -22,9 +22,13 @@ export class AuthController {
     response.send(jwt);
   }
 
+  // add a new route in this controller and it's going to use the MESSAGE PATTERN decorator
+  //, which is going to allow us to accept incoming RPC calls on our chosen transport layer.
+  // @payload will extract the current payload for this message pattern.
   @UseGuards(JwtAuthGuard)
   @MessagePattern('authenticate')
   async authenticate(@Payload() data: any) {
+    console.log(data);
     return data.user;
   }
 }
