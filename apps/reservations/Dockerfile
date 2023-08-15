@@ -1,4 +1,4 @@
-FROM node:alpine as development
+FROM node:alpine AS development
 
 WORKDIR /usr/src/app
 
@@ -11,12 +11,12 @@ COPY nest-cli.json nest-cli.json
 COPY apps/reservations apps/reservations
 COPY libs libs
 
-RUN npm i -r
+RUN NODE_ENV=development npm i -r
 RUN npm run build reservations
 
 # ------------------------------------------------------------
 
-FROM node:alpine as production
+FROM node:alpine AS production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}

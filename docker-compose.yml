@@ -31,6 +31,22 @@ services:
     volumes:
       - .:/usr/src/app
 
+  payments:
+    container_name: payments
+    build:
+      context: .
+      dockerfile: ./apps/payments/Dockerfile
+      target: development
+    command: npm run start:dev payments
+    env_file:
+      - ./apps/payments/.env
+    depends_on:
+      - mongo
+    ports:
+      - "7002:7002"
+    volumes:
+      - .:/usr/src/app
+
   mongo:
     container_name: mongodb
     image: mongo
