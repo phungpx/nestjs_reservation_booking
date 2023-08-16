@@ -45,6 +45,20 @@ services:
     volumes:
       - .:/usr/src/app
 
+  notifications:
+    container_name: notifications
+    build:
+      context: .
+      dockerfile: ./apps/notifications/Dockerfile
+      target: development
+    command: npm run start:dev notifications
+    env_file:
+      - ./apps/notifications/.env
+    depends_on:
+      - mongo
+    volumes:
+      - .:/usr/src/app
+
   mongo:
     container_name: mongodb
     image: mongo
