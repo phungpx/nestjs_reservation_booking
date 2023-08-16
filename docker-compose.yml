@@ -42,8 +42,6 @@ services:
       - ./apps/payments/.env
     depends_on:
       - mongo
-    ports:
-      - "7002:7002"
     volumes:
       - .:/usr/src/app
 
