@@ -11,7 +11,7 @@ COPY nest-cli.json nest-cli.json
 COPY apps/payments apps/payments
 COPY libs libs
 
-RUN npm i -r
+RUN NODE_ENV=development npm i -r
 RUN npm run build payments
 
 # ------------------------------------------------------------
