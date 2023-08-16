@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { NOTIFICATIONS_SERVICE } from '@app/common';
+import { CreateChargeDto, NOTIFICATIONS_SERVICE } from '@app/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { PaymentsCreateChargeDto } from './dto/payments-create-charge.dto';
 
@@ -21,25 +21,26 @@ export class PaymentsService {
     private readonly notificationsService: ClientProxy,
   ) {}
 
-  async createCharge({ card, amount, email }: PaymentsCreateChargeDto) {
-    const paymentMethod = await this.stripe.paymentMethods.create({
-      type: 'card',
-      card,
-    });
+  async createCharge({ card, amount }: CreateChargeDto) {
+    // const paymentMethod = await this.stripe.paymentMethods.create({
+    //   type: 'card',
+    //   card,
+    // });
 
-    const paymentIntent = await this.stripe.paymentIntents.create({
-      payment_method: paymentMethod.id,
-      amount: amount * 100,
-      confirm: true,
-      payment_method_types: ['card'],
-      currency: 'usd',
-    });
+    // const paymentIntent = await this.stripe.paymentIntents.create({
+    //   payment_method: paymentMethod.id,
+    //   amount: amount * 100,
+    //   confirm: true,
+    //   payment_method_types: ['card'],
+    //   currency: 'usd',
+    // });
 
-    this.notificationsService.emit('notify_email', {
-      email,
-      text: `Your payment of $${amount} has completed successfully.`,
-    });
+    // this.notificationsService.emit('notify_email', {
+    //   email,
+    //   text: `Your payment of $${amount} has completed successfully.`,
+    // });
 
-    return paymentIntent;
+    // return paymentIntent;
+    return { id: '1', card, amount }; // for testing purpose, I cannot send request to Stripe API
   }
 }
