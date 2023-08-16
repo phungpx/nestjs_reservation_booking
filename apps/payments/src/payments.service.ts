@@ -1,7 +1,7 @@
 // import Stripe from 'stripe';
 // import { ConfigService } from '@nestjs/config';
 import { Inject, Injectable } from '@nestjs/common';
-import { NOTIFICATIONS_SERVICE } from '@app/common';
+import { NOTIFICATIONS_SERVICE, NotifyEmailDto } from '@app/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { PaymentsCreateChargeDto } from './dto/payments-create-charge.dto';
 
@@ -35,12 +35,15 @@ export class PaymentsService {
     //   currency: 'usd',
     // });
 
-    this.notificationsService.emit('notify_email', {
+    // emit pattern (String) and payload (NotifyEmailDto)
+    const eventPattern = 'notify_email';
+    const eventPayload: NotifyEmailDto = {
       email,
       text: `Your payment of $${amount} has completed successfully.`,
-    });
+    };
+    this.notificationsService.emit(eventPattern, eventPayload);
 
     // return paymentIntent;
-    return { id: 'this-is-your-tempeting-payment-id', email, card, amount }; // for testing purpose, I cannot send request to Stripe API
+    return { id: 'this-is-your-tempeting-payment-id', card, amount }; // for testing purpose, I cannot send request to Stripe API
   }
 }
