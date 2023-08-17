@@ -9,8 +9,12 @@ export class PaymentsController {
 
   @MessagePattern('create_charge')
   @UsePipes(new ValidationPipe())
-  async createCharge(@Payload() data: PaymentsCreateChargeDto) {
-    const paymentIntent = this.paymentsService.createCharge(data);
+  async createCharge(
+    @Payload() paymentsCreateChargeDto: PaymentsCreateChargeDto,
+  ) {
+    const paymentIntent = this.paymentsService.createCharge(
+      paymentsCreateChargeDto,
+    );
     return paymentIntent;
   }
 }

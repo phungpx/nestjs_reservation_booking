@@ -10,6 +10,9 @@ export class NotificationsController {
   @UsePipes(new ValidationPipe()) // validate data based on dto
   @EventPattern('notify_email')
   async notifyEmail(@Payload() notifyEmailDto: NotifyEmailDto) {
-    console.log(this.notificationsService.notifyEmail(notifyEmailDto));
+    console.log(
+      `Email: ${notifyEmailDto.email} - Text: ${notifyEmailDto.text}`,
+    );
+    this.notificationsService.notifyEmail(notifyEmailDto);
   }
 }
